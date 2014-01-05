@@ -24,7 +24,7 @@ optparse = OptionParser.new do |opts|
     options[:output] = outputfile
   end
   
-  opts.on('-r', '--remind HOURS', 'OPTIONAL: remind n hours before start') do |remindH|
+  opts.on('-r', '--remind HOURS', 'OPTIONAL: remind n hours before start') do |remind|
     options[:remind] = remind
   end
 
@@ -54,6 +54,12 @@ puts "Performing task with options: #{options.inspect}"
 cal = Calendar.new
 type=nil
 
+if options[:remind]
+  alarmtrigger = "-P0DT" + options[:remind] + "H0M0S" 
+  puts "Alarm"
+  puts alarmtrigger
+end
+
 data=File.open( options[:input] ).read
 data.gsub!(/\r\n?/, "\n")
 
@@ -74,6 +80,7 @@ data.each_line do |line|
         dtend         Date.new(result[3].to_i, result[2].to_i, result[1].to_i)
         summary     type
         description type
+        
       end    
     end
     
