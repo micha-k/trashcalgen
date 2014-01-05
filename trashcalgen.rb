@@ -2,6 +2,7 @@
 
 #
 # Trash Calender Generator
+# https://github.com/micha-k/trashcalgen
 # Michael Kessel (dev@michaelkessel.de)
 #
 # v1, 05.01.2014 
