@@ -54,12 +54,6 @@ puts "Performing task with options: #{options.inspect}"
 cal = Calendar.new
 type=nil
 
-if options[:remind]
-  alarmtrigger = "-P0DT" + options[:remind] + "H0M0S" 
-  puts "Alarm"
-  puts alarmtrigger
-end
-
 data=File.open( options[:input] ).read
 data.gsub!(/\r\n?/, "\n")
 
@@ -80,6 +74,15 @@ data.each_line do |line|
         dtend         Date.new(result[3].to_i, result[2].to_i, result[1].to_i)
         summary     type
         description type
+        
+        if options[:remind]
+          alarm do
+              action        "DISPLAY"
+              summary       "Reminder"
+              alarmtrigger = "-P0DT" + options[:remind] + "H0M0S"
+              trigger       alarmtrigger
+            end
+        end
         
       end    
     end
