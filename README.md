@@ -14,7 +14,6 @@ The following ruby packages (installed via gems) are required for the correct fu
 Parameters:
 * -i : Input file for batch dates, see format below
 * -o : Output file name, format is ical
-* -r : set if you want to set a reminder n hours before the event starts	
 
 ## Input File Format
 
